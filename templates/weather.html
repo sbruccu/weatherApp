@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather Information</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body class="center">
+    <h1>Weather Information for {{ city }}</h1>
+    {% if weather_data %}
+        <p><strong>Description:</strong> {{ weather_data['weather'][0]['description'] }}</p>
+        <p><strong>Temperature:</strong> {{ weather_data['main']['temp'] }}°C</p>
+        <p><strong>Temperature feels like:</strong> {{ weather_data['main']['feels_like'] }}°C</p>
+        <p><strong>Temperature minimum:</strong> {{ weather_data['main']['temp_min'] }}°C</p>
+        <p><strong>Temperature maximum:</strong> {{ weather_data['main']['temp_max'] }}°C</p>
+        <p><strong>Humidity:</strong> {{ weather_data['main']['humidity'] }}%</p>
+        <p><strong>Wind Speed:</strong> {{ weather_data['wind']['speed'] }} m/s</p>
+        <p><strong>Wind Speed:</strong> {{ weather_data['wind']['speed'] }} m/s</p>
+    {% else %}
+        <p>Weather information not available for this city.</p>
+    {% endif %}
+</body>
+</html>

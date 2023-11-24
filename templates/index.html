@@ -3,20 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Weather App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
-<body>
-    <h1>Weather App</h1>
+<body id="inputBackground">
+    <h1 class="center">Weather App</h1>
     <form method="post">
-        <label for="city">Enter City:</label>
-        <input type="text" id="city" name="city" required>
-        <input type="submit" value="Get Weather">
+        <label class="center" for="city">Enter City:</label>
+        <input class="center" type="text" id="city" name="city" required>
+        <input class="center" type="submit" value="Get Weather">
     </form>
-    {% if weather_data %}
-        <h2>Weather in {{ weather_data['name'] }}, {{ weather_data['sys']['country'] }}</h2>
-        <p>{{ weather_data['weather'][0]['description'] }}</p>
-        <p>Temperature: {{ weather_data['main']['temp'] }}°C</p>
-        <p>Humidity: {{ weather_data['main']['humidity'] }}%</p>
-        <p>Wind Speed: {{ weather_data['wind']['speed'] }} m/s</p>
-    {% endif %}
 </body>
 </html>
