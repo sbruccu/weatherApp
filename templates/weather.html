@@ -5,17 +5,32 @@
     <title>Weather Information</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
-<body class="center">
+<body class="center" id="weather-background">
     <h1>Weather Information for {{ city }}</h1>
     {% if weather_data %}
-        <p><strong>Description:</strong> {{ weather_data['weather'][0]['description'] }}</p>
-        <p><strong>Temperature:</strong> {{ weather_data['main']['temp'] }}°C</p>
-        <p><strong>Temperature feels like:</strong> {{ weather_data['main']['feels_like'] }}°C</p>
-        <p><strong>Temperature minimum:</strong> {{ weather_data['main']['temp_min'] }}°C</p>
-        <p><strong>Temperature maximum:</strong> {{ weather_data['main']['temp_max'] }}°C</p>
-        <p><strong>Humidity:</strong> {{ weather_data['main']['humidity'] }}%</p>
-        <p><strong>Wind Speed:</strong> {{ weather_data['wind']['speed'] }} m/s</p>
-        <p><strong>Wind Speed:</strong> {{ weather_data['wind']['speed'] }} m/s</p>
+        <div class="table-container">
+            <table>
+                <tr>
+                <th>Description</th>
+                <th>Temperature</th>
+                <th>Feels like</th>
+                <th>Minimum temperature</th>
+                <th>Maximum temperature</th>
+                <th>Humidity</th>
+                <th>Wind speed</th>
+                </tr>
+                <tr>
+                <td>{{ weather_data['weather'][0]['description'] }}</td>
+                <td>{{ weather_data['main']['temp'] }} °C</td>
+                <td>{{ weather_data['main']['feels_like'] }} °C</td>
+                <td>{{ weather_data['main']['temp_min'] }} °C</td>
+                <td>{{ weather_data['main']['temp_max'] }} °C</td>
+                <td>{{ weather_data['main']['humidity'] }}%</td>
+                <td>{{ weather_data['wind']['speed']}} m/s</td>
+                </tr>
+            </table>
+        </div>
+
     {% else %}
         <p>Weather information not available for this city.</p>
     {% endif %}
